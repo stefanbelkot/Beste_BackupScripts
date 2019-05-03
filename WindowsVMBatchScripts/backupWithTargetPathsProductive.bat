@@ -110,7 +110,7 @@ ECHO -----------------------------
 taskkill /F /FI "SERVICES eq "TeamCity Server""
 SET teamcity="C:\ProgramData\JetBrains\TeamCity"
 CALL "%~dp0\packfolderswith7zip.bat" "%teamcity%\config" %timestampbackuppath% %szpath% 0 "%dateformated%-%timeformatted%_Teamcity"
-CALL "%~dp0\packfolderswith7zip.bat" "%teamcity%\lib " %timestampbackuppath% %szpath% 0 "%dateformated%-%timeformatted%_Teamcity"
+CALL "%~dp0\packfolderswith7zip.bat" "%teamcity%\lib" %timestampbackuppath% %szpath% 0 "%dateformated%-%timeformatted%_Teamcity"
 CALL "%~dp0\packfolderswith7zip.bat" "%teamcity%\plugins" %timestampbackuppath% %szpath% 0 "%dateformated%-%timeformatted%_Teamcity"
 CALL "%~dp0\packfolderswith7zip.bat" "%teamcity%\system" %timestampbackuppath% %szpath% 0 "%dateformated%-%timeformatted%_Teamcity"
 call "%~dp0\mysqldumpdatabase.bat" "teamcity" %timestampbackuppath% %mysqlpath% %szpath% "%dateformated%-%timeformatted%_Database_teamcity"
