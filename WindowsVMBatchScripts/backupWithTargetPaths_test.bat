@@ -1,5 +1,12 @@
 @ECHO OFF
-SET szpath="R:\Beste_BackupScripts\WindowsVMBatchScripts\7za"
+ECHO -----------------------------------------
+ECHO --- Testing the parent script  ---
+ECHO --- for all backup is working  ---
+ECHO -----------------------------------------
+ECHO.
+REM Modify the paths according to your file system
+SET szpath="C:\Beste_BackupScripts\WindowsVMBatchScripts\7za"
 SET mysqlpath="C:\xampp\mysql\bin"
-SET backuppath="R:\Beste_BackupScripts\WindowsVMBatchScripts\Tests\BackupFolder"
-call backupWithTargetPaths.bat %szpath% %mysqlpath% %backuppath%
+SET backuppath="C:\Beste_BackupScripts\WindowsVMBatchScripts\Tests\BackupFolder"
+call backupWithTargetPathsTest.bat %szpath% %mysqlpath% %backuppath%
+pause

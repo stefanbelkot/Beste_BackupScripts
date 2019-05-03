@@ -10,11 +10,14 @@ ECHO ---------------------------------------
 IF "%~1"=="" GOTO help
 IF "%2"=="" GOTO help
 IF "%3"=="" GOTO help
+IF "%4"=="" GOTO help
 
-set dirsToPack=%1
+set dirsToPack=%~1
 set movedir=%2
 set szpath=%3
-set packedname=%4
+REM for compressionlevels see https://sevenzip.osdn.jp/chm/cmdline/switches/method.htm#ZipX 0:copy, 5:normal
+set compressionLevel=%4
+set packedname=%5
 IF NOT EXIST %szpath%\ GOTO foldernotexists
 IF NOT EXIST %movedir%\ GOTO foldernotexists
 IF NOT EXIST %szpath%\7za.exe GOTO filenotexists
@@ -36,7 +39,8 @@ IF "%packedname%"=="" for %%f in (%dirsToPack%) do set packedname=%%~nxf
 
 REM Above is faster but needs double space
 REM 7za a -tzip "%movedir%\%myfolder%_%TODAY%.zip" -r "%dirsToPack%\*.*" -mx5
-7za a "%movedir%\%packedname%.7z" -r "%dirsToPack%" -mmt=2
+ECHO 7za a "%movedir%\%packedname%.7z" "%dirsToPack%" -mmt=4 -mx=%compressionLevel%
+7za a "%movedir%\%packedname%.7z" "%dirsToPack%" -mmt=4 -mx=%compressionLevel%
 ECHO -----------------------------------------
 ECHO --- packfolderswith7zip.bat completed ---
 ECHO -----------------------------------------
@@ -69,6 +73,6 @@ ECHO -
 ECHO - 
 ECHO **** HELP for packfolderswith7zip.bat ****
 ECHO Call the script like:
-ECHO packfolderswith7zip.bat "dirsToPack" "movedir" "folderOf_7za.exe" "OptionalPackedName"
+ECHO packfolderswith7zip.bat "dirsToPack" "movedir" "folderOf_7za.exe" "compressionLevel [0 | 1 | 3 | 5 | 7 | 9 ]" "OptionalPackedName"
 ECHO - 
 pause

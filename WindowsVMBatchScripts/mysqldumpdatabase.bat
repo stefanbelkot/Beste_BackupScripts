@@ -32,7 +32,7 @@ ECHO.
 ECHO Dumping database to "%movedir%\%packedname%.7z"
 ECHO.
 REM mysqldump -uroot -proot --databases %database% > "%movedir%\%TODAY%_%database%.sql" 
-mysqldump -uroot -proot --databases %database% | 7za a -si "%movedir%\%packedname%.7z"
+mysqldump -uroot -proot --max_allowed_packet=512M --databases %database% | 7za a -si "%movedir%\%packedname%.7z"
 
 ECHO ---------------------------------------
 ECHO --- mysqldumpdatabase.bat completed ---
