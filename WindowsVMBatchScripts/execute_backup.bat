@@ -8,6 +8,11 @@ SET mysqlpath="C:\PROGRA~1\MySQL\MYSQLS~1.7\bin"
 SET backuppath="C:\OneDrive\VMWindowsBackup"
 
 ECHO -----------------------------
+ECHO --- Open Script path: %~dp0 ----
+ECHO -----------------------------
+cd %~dp0
+
+ECHO -----------------------------
 ECHO --- Stopping services ----
 ECHO -----------------------------
 sc stop "Apache"
